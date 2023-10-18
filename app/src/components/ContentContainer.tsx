@@ -34,6 +34,12 @@ export const ContentContainer: React.FC<Props> = ({ children }) => {
             href="/basics"
           />
           </li>
+          <li>
+          <NavElement
+            label="Create Token"
+            href="/create"
+          />
+          </li>
         </ul>
       </div>
     </div>
