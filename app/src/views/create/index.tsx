@@ -11,7 +11,7 @@ export const CreateView: FC = ({ }) => {
         <h1 className="text-center text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#9945FF] to-[#14F195]">
           Create Token
         </h1>      
-        <div className="text-center">
+        <div style={{height:'100%'}} className="text-center">
           <CreateToken />
         </div>
       </div>

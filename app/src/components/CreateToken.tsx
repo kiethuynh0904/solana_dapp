@@ -22,6 +22,7 @@ export const CreateToken: FC = () => {
   const [symbol, setSymbol] = useState("");
   const [metadata, setMetadata] = useState("");
   const [amount, setAmount] = useState(0);
+  const [decimals, setDecimals] = useState(9);
   const umi = useUmi();
 
   const onClick = useCallback(
@@ -34,7 +35,8 @@ export const CreateToken: FC = () => {
             name: form.tokenName,
             uri: form.metadata,
             symbol: form.symbol,
-            sellerFeeBasisPoints: percentAmount(5.5),
+            sellerFeeBasisPoints: percentAmount(0),
+            decimals: form.decimals,
           })
         )
         .add(
@@ -45,11 +47,11 @@ export const CreateToken: FC = () => {
           })
         );
       const confirmResult = await builder.sendAndConfirm(umi);
-      console.log("mint", mint.publicKey);
+      const stringSignature = new TextDecoder().decode(confirmResult.signature);
       notify({
         type: "success",
         message: "Successfully",
-        txid: confirmResult.signature.toString(),
+        txid: stringSignature,
       });
     },
     [umi]
@@ -75,6 +77,13 @@ export const CreateToken: FC = () => {
       />
       <input
         type="number"
+        value={decimals}
+        className="form-control block mb-2 w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        placeholder="Decimals(eg 0-9)"
+        onChange={(e) => setDecimals(Number(e.target.value))}
+      />
+      <input
+        type="number"
         className="form-control block mb-2 w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         placeholder="Amount"
         onChange={(e) => setAmount(Number(e.target.value))}
@@ -93,6 +102,7 @@ export const CreateToken: FC = () => {
             symbol: symbol,
             tokenName: tokenName,
             amount: amount,
+            decimals: decimals,
           })
         }
       >
