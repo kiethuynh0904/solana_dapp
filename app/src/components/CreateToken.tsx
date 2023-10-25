@@ -10,11 +10,14 @@ import {
 
 import { useUmi } from "pages/useUmi";
 import {
+  base64,
   generateSigner,
   percentAmount,
   transactionBuilder,
+  utf8,
 } from "@metaplex-foundation/umi";
 import { notify } from "utils/notifications";
+import { base58, bytes, string } from "@metaplex-foundation/umi/serializers";
 
 export const CreateToken: FC = () => {
   const wallet = useWallet();
@@ -47,11 +50,12 @@ export const CreateToken: FC = () => {
           })
         );
       const confirmResult = await builder.sendAndConfirm(umi);
-      const stringSignature = new TextDecoder().decode(confirmResult.signature);
+      console.log("mint acc", mint);
+      const txid = base58.deserialize(confirmResult.signature)[0];
       notify({
         type: "success",
         message: "Successfully",
-        txid: stringSignature,
+        txid: txid,
       });
     },
     [umi]
