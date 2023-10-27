@@ -40,6 +40,12 @@ export const ContentContainer: React.FC<Props> = ({ children }) => {
             href="/create"
           />
           </li>
+          <li>
+          <NavElement
+            label="Create NFTs"
+            href="/createNFTs"
+          />
+          </li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,58 @@
+.loading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.loading svg {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(var(52, 211, 153));
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.success {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  background: rgb(var(--secondary-background-rgb));
+  border: 1px solid rgb(var(--tertiary-background-rgb));
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.success > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.success code {
+  font-family: var(--font-mono);
+  color: rgb(var(--secondary-foreground-rgb));
+}
+
+.success svg {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(var(--accent-rgb));
+}
+
+.success:hover {
+  background-color: rgb(var(--hover-background-rgb));
+}
+
+.success:hover code {
+  color: rgb(var(--accent-rgb));
+}

@@ -19,5 +19,5 @@ export function getExplorerUrl(
       return cluster ? `?cluster=${cluster}` : ''
     }
   
-    return `https://explorer.solana.com/${itemType}/${viewTypeOrItemAddress}${getClusterUrlParam()}`
+    return `https://solscan.io/${itemType}/${viewTypeOrItemAddress}${getClusterUrlParam()}`
   }
