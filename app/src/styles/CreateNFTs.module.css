@@ -9,7 +9,7 @@
 .loading svg {
   width: 2rem;
   height: 2rem;
-  color: rgb(var(52, 211, 153));
+  color: rgb(var(--accent-rgb));
   animation: spin 2s linear infinite;
 }
 
