@@ -23,7 +23,7 @@ export const TransferToken: FC = () => {
                 mint: tokenMint,
                 destinationOwner: destination,
                 tokenStandard: TokenStandard.Fungible,
-                amount: 10 * LAMPORT_PER_S3C,
+                amount: 10.4 * LAMPORT_PER_S3C,
             }).sendAndConfirm(umi)
             const txid = base58.deserialize(confirmResults.signature)[0];
             notify({ type: 'success', message: 'Token send successful!', txid: txid });
@@ -46,7 +46,7 @@ export const TransferToken: FC = () => {
                         Wallet not connected
                     </div>
                     <span className="block group-disabled:hidden" >
-                        Transfer Token
+                        Send S3Coin
                     </span>
                 </button>
             </div>
